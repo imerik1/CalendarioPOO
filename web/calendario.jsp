@@ -14,6 +14,9 @@
 <%@page import="java.util.Arrays"%>
 <%@page import="java.time.YearMonth"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+    String buttons = "text-sm text-blue-700 cursor-pointer"; 
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -95,19 +98,19 @@
                     out.print("</div>");
                     out.print("<div class='flex w-full flex-row justify-around'>");
                         if((month + 1) > 12){
-                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month-1)+"' class='text-sm text-blue-700 cursor-pointer'><b> < </b> Mês anterior</a>");
-                            out.print("<a href='calendario.jsp?year="+(year+1)+"&month=1' class='text-sm text-blue-700 cursor-pointer'>Próximo mês <b> > </b></a>");
+                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month-1)+"' class='"+buttons+"'><b> < </b> Mês anterior</a>");
+                            out.print("<a href='calendario.jsp?year="+(year+1)+"&month=1' class='"+buttons+"'>Próximo mês <b> > </b></a>");
                         } else if ((month - 1) < 1) {
-                            out.print("<a href='calendario.jsp?year="+(year-1)+"&month=12' class='text-sm text-blue-700 cursor-pointer'><b> < </b> Mês anterior</a>");
-                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month+1)+"' class='text-sm text-blue-700 cursor-pointer'>Próximo mês> <b> > </b></a>");
+                            out.print("<a href='calendario.jsp?year="+(year-1)+"&month=12' class='"+buttons+"'><b> < </b> Mês anterior</a>");
+                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month+1)+"' class='"+buttons+"'>Próximo mês> <b> > </b></a>");
                         } else {
-                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month-1)+"' class='text-sm text-blue-700 cursor-pointer'><b> < </b> Mês anterior</a>");
-                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month+1)+"' class='text-sm text-blue-700 cursor-pointer'>Próximo mês <b> > </b></a>");
+                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month-1)+"' class='"+buttons+"'><b> < </b> Mês anterior</a>");
+                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month+1)+"' class='"+buttons+"'>Próximo mês <b> > </b></a>");
                         }
                     out.print("</div>");
                     out.print("<div class='flex w-full flex-row justify-around'>");
-                        out.print("<a href='calendario.jsp?year="+(year-1)+"&month="+month+"' class='text-sm text-blue-700 cursor-pointer'><b> < </b> Ano anterior</a>");
-                        out.print("<a href='calendario.jsp?year="+(year+1)+"&month="+month+"' class='text-sm text-blue-700 cursor-pointer'>Próximo ano <b> > </b></a>");
+                        out.print("<a href='calendario.jsp?year="+(year-1)+"&month="+month+"' class='"+buttons+"'><b> < </b> Ano anterior</a>");
+                        out.print("<a href='calendario.jsp?year="+(year+1)+"&month="+month+"' class='"+buttons+"'>Próximo ano <b> > </b></a>");
                     out.print("</div>");
                 } catch (Exception e) {
                        out.print("<p class='text-red-500'>Ocorreu um erro, volte ao ínicio e tente novamente.</p>");
