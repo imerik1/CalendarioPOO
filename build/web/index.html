@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Página Inicial</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <style>
+            * {
+                font-family: Roboto, Arial, sans-serif;
+            }
+            *:active, *:focus {
+                outline: none;
+            }
+        </style>
+    </head>
+    <body class="flex flex-col items-center justify-center min-h-screen gap-4">
+        <div class="text-center w-full" style="max-width: 600px">
+            <h1>Erik Santana Marques dos Santos</h1>
+            <h2><b>Meu RA</b>: 1290482013016</h2>
+        </div>
+        <p>Preencha o mês e o ano</p>
+        <form action="calendario.jsp" method="get" class="flex flex-col items-center justify-center w-full gap-4" style="max-width: 600px">
+            <div class="flex items-center justify-center gap-2">
+                <label for="year">Digite o ano</label>
+                <input class="border-2 border-black rounded-lg px-2 py-1" id="year" name="year" type="number" min="1800" max="2200" value="2021" />
+                <label for="month">Digite o mês</label>
+                <input class="border-2 border-black rounded-lg px-2 py-1" id="month" name="month" type="number" min="1" max="12" value="8" />
+            </div>
+            <input class="px-2 py-1 text-white rounded-lg bg-blue-600 cursor-pointer hover:bg-blue-500" style="margin: 0 auto" type="submit" value="Verificar calendário"/>
+        </form>
+    </body>
+</html>
