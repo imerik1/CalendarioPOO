@@ -4,6 +4,12 @@
     Author     : EkerSteve
 --%>
 
+<%-- 
+    Document   : calendario
+    Created on : 30 de ago. de 2021, 20:31:04
+    Author     : EkerSteve
+--%>
+
 <%@page import="java.util.List"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.time.YearMonth"%>
@@ -11,7 +17,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <% out.print("<title>Caléndario "+request.getParameter("year")+"</title>"); %>
+        <% 
+            try {
+                Integer year = Integer.parseInt(request.getParameter("year"));
+                Integer month = Integer.parseInt(request.getParameter("month"));
+                out.print("<title>Caléndario "+year+"</title>"); 
+                out.print("<link rel='shortcut icon' href='https://iconarchive.com/download/i107325/google/noto-emoji-animals-nature/22214-dog-face.ico' />");
+            } catch(Exception e) {
+                out.print("<title>Ocorreu um erro</title>"); 
+                out.print("<link rel='shortcut icon' href='https://download1334.mediafire.com/8waqmxcf79ug/vg239kh46gp438g/favicon.ico' />");
+            }
+        %>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -79,15 +95,19 @@
                     out.print("</div>");
                     out.print("<div class='flex w-full flex-row justify-around'>");
                         if((month + 1) > 12){
-                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month-1)+"' class='text-sm text-blue-700 cursor-pointer'>Mês anterior</a>");
-                            out.print("<a href='calendario.jsp?year="+(year+1)+"&month=1' class='text-sm text-blue-700 cursor-pointer'>Próximo mês</a>");
+                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month-1)+"' class='text-sm text-blue-700 cursor-pointer'><b> < </b> Mês anterior</a>");
+                            out.print("<a href='calendario.jsp?year="+(year+1)+"&month=1' class='text-sm text-blue-700 cursor-pointer'>Próximo mês <b> > </b></a>");
                         } else if ((month - 1) < 1) {
-                            out.print("<a href='calendario.jsp?year="+(year-1)+"&month=12' class='text-sm text-blue-700 cursor-pointer'>Mês anterior</a>");
-                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month+1)+"' class='text-sm text-blue-700 cursor-pointer'>Próximo mês</a>");
+                            out.print("<a href='calendario.jsp?year="+(year-1)+"&month=12' class='text-sm text-blue-700 cursor-pointer'><b> < </b> Mês anterior</a>");
+                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month+1)+"' class='text-sm text-blue-700 cursor-pointer'>Próximo mês> <b> > </b></a>");
                         } else {
-                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month-1)+"' class='text-sm text-blue-700 cursor-pointer'>Mês anterior</a>");
-                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month+1)+"' class='text-sm text-blue-700 cursor-pointer'>Próximo mês</a>");
+                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month-1)+"' class='text-sm text-blue-700 cursor-pointer'><b> < </b> Mês anterior</a>");
+                            out.print("<a href='calendario.jsp?year="+year+"&month="+(month+1)+"' class='text-sm text-blue-700 cursor-pointer'>Próximo mês <b> > </b></a>");
                         }
+                    out.print("</div>");
+                    out.print("<div class='flex w-full flex-row justify-around'>");
+                        out.print("<a href='calendario.jsp?year="+(year-1)+"&month="+month+"' class='text-sm text-blue-700 cursor-pointer'><b> < </b> Ano anterior</a>");
+                        out.print("<a href='calendario.jsp?year="+(year+1)+"&month="+month+"' class='text-sm text-blue-700 cursor-pointer'>Próximo ano <b> > </b></a>");
                     out.print("</div>");
                 } catch (Exception e) {
                        out.print("<p class='text-red-500'>Ocorreu um erro, volte ao ínicio e tente novamente.</p>");
